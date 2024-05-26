@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validação de Formulário</title>
+</head>
+<body>
+    <h1>Validação de Formulário</h1>
+    <form id="meuFormulario">
+        <label for="campoA">Campo A:</label>
+        <input type="number" id="campoA" name="campoA" required>
+        <br>
+        <label for="campoB">Campo B:</label>
+        <input type="number" id="campoB" name="campoB" required>
+        <br>
+        <button type="submit">Enviar</button>
+    </form>
+
+    <div id="mensagem"></div>
+
+    <script>
+        const formulario = document.getElementById('meuFormulario');
+        const campoA = document.getElementById('campoA');
+        const campoB = document.getElementById('campoB');
+        const mensagem = document.getElementById('mensagem');
+
+        formulario.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const valorA = parseFloat(campoA.value);
+            const valorB = parseFloat(campoB.value);
+
+            if (valorB > valorA) {
+                mensagem.textContent = 'Formulário válido! B é maior que A.';
+                mensagem.style.color = 'green';
+            } else {
+                mensagem.textContent = 'Formulário inválido! B deve ser maior que A.';
+                mensagem.style.color = 'red';
+            }
+        });
+    </script>
+</body>
+</html>
